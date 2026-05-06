@@ -1,0 +1,1349 @@
+
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StepUp Store - Toko Sepatu Premium untuk Generasi Muda</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* === RESET & BASE STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            overflow-x: hidden;
+            background: radial-gradient(circle at top right, rgba(143,91,255,0.08), transparent 38%),
+                        radial-gradient(circle at top left, rgba(109,141,255,0.06), transparent 30%),
+                        #e4e9f0;
+        }
+
+        /* === CUSTOM PROPERTIES (Warna Utama: Hitam & Oranye) === */
+        :root {
+            --primary-black: #1a1a1a;
+            --primary-orange: #ff6b35;
+            --orange-light: #ff8c5a;
+            --black-light: #2d2d2d;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray: #6c757d;
+            --muted-text: #a8b0c5;
+            --accent-blue: #6d8dff;
+            --accent-purple: #8f5bff;
+            --shadow: 0 20px 40px rgba(0,0,0,0.1);
+            --shadow-hover: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        /* === SCROLLBAR CUSTOM === */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--gray-light);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-orange);
+            border-radius: 10px;
+        }
+
+        /* === CONTAINER === */
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* === BUTTON STYLES === */
+        .btn {
+            display: inline-block;
+            padding: 16px 38px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(120deg, var(--primary-orange), var(--accent-purple));
+            color: var(--white);
+            box-shadow: 0 18px 35px rgba(255, 107, 53, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 48px rgba(143, 91, 255, 0.28);
+            background: linear-gradient(120deg, var(--accent-purple), var(--primary-orange));
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--primary-orange);
+            border: 1px solid rgba(255, 255, 255, 0.38);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-orange);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* === HERO SECTION === */
+        #hero {
+            height: 100vh;
+            background: radial-gradient(circle at 20% 20%, rgba(109,141,255,0.35), transparent 30%),
+                        radial-gradient(circle at 80% 0%, rgba(255,107,53,0.3), transparent 35%),
+                        linear-gradient(140deg, #0a1023 0%, #121a36 40%, #19192f 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10,16,35,0.25), rgba(10,16,35,0.65));
+            pointer-events: none;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(120deg, #ffffff 20%, #e8dfff 60%, #ffa27f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: var(--muted-text);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            position: relative;
+            transform: translateX(50px);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            box-shadow: 0 35px 85px rgba(4, 8, 26, 0.7);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* === SECTION COMMON STYLES === */
+        section {
+            padding: 120px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(110deg, #0f172a, #4c1d95, var(--primary-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* === FEATURES SECTION === */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 60px 30px;
+            background: rgba(255,255,255,0.82);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-orange), var(--orange-light));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--accent-purple));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 2.5rem;
+            color: white;
+            box-shadow: 0 18px 40px rgba(143, 91, 255, 0.25);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-black);
+        }
+
+        /* === ABOUT SECTION === */
+        .about-section {
+            background: linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0.9));
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-black);
+            margin-bottom: 30px;
+        }
+
+        .about-text p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .shoe-tube {
+            width: min(420px, 100%);
+            aspect-ratio: 1 / 1;
+            border-radius: 32px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 25% 20%, rgba(236, 72, 153, 0.2), transparent 42%),
+                        radial-gradient(circle at 80% 85%, rgba(59, 130, 246, 0.25), transparent 45%),
+                        linear-gradient(150deg, #04050d 0%, #0a1020 55%, #0b0c13 100%);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: inset 0 0 45px rgba(255, 255, 255, 0.06), 0 30px 80px rgba(2, 6, 23, 0.55);
+            overflow: hidden;
+            cursor: grab;
+            touch-action: none;
+            user-select: none;
+            padding: 22px;
+        }
+
+        .shoe-tube.dragging {
+            cursor: grabbing;
+        }
+
+        .shoe-tube::before,
+        .shoe-tube::after {
+            content: '';
+            position: absolute;
+            border-radius: 26px;
+            pointer-events: none;
+        }
+
+        .shoe-tube::before {
+            inset: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: inset 0 0 30px rgba(59, 130, 246, 0.18);
+        }
+
+        .shoe-tube::after {
+            inset: -1px;
+            border: 2px solid transparent;
+            background: linear-gradient(130deg, #ff2da0, #8b5cf6, #22d3ee, #84cc16, #ff2da0) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            animation: rgbBorder 4s linear infinite;
+        }
+
+        .shoe-showcase {
+            width: 100%;
+            height: 100%;
+            border-radius: 22px;
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.8));
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            overflow: hidden;
+            transform-style: preserve-3d;
+            will-change: transform;
+            box-shadow: 0 22px 45px rgba(0, 0, 0, 0.45), 0 0 35px rgba(99, 102, 241, 0.2);
+        }
+
+        .shoe-showcase-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: saturate(1.08) contrast(1.05);
+            transition: opacity 0.4s ease;
+        }
+
+        .shoe-showcase-image.is-switching {
+            opacity: 0.4;
+        }
+
+        .shoe-glow-shadow {
+            position: absolute;
+            width: 72%;
+            height: 26px;
+            bottom: 6%;
+            border-radius: 999px;
+            background: radial-gradient(ellipse at center, rgba(34, 211, 238, 0.36), rgba(236, 72, 153, 0.18), transparent 70%);
+            filter: blur(10px);
+            pointer-events: none;
+            animation: rgbPulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes rgbBorder {
+            from { filter: hue-rotate(0deg); }
+            to { filter: hue-rotate(360deg); }
+        }
+
+        @keyframes rgbPulse {
+            0%, 100% { opacity: 0.65; transform: scaleX(1); }
+            50% { opacity: 1; transform: scaleX(1.08); }
+        }
+
+        /* === TESTIMONIALS SECTION === */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.82);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            box-shadow: 0 18px 38px rgba(15, 23, 42, 0.1);
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-orange);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-family: serif;
+        }
+
+        .stars {
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--primary-black);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-orange);
+        }
+
+        /* === PRODUCTS SECTION === */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 28px;
+            margin-top: 60px;
+        }
+
+        .product-card {
+            background: rgba(255,255,255,0.86);
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(15, 23, 42, 0.16);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 1.1rem;
+            color: var(--primary-black);
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+            margin-bottom: 14px;
+        }
+
+        .product-order-btn {
+            width: 100%;
+            text-align: center;
+            padding: 12px 18px;
+            font-size: 0.92rem;
+            letter-spacing: 0.01em;
+        }
+
+        /* === PRICING SECTION === */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            background: rgba(255,255,255,0.86);
+            backdrop-filter: blur(20px);
+            padding: 50px 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(140deg, #f97316, #db2777, #8b5cf6);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 30px 55px rgba(139, 92, 246, 0.35);
+        }
+
+        .pricing-card.featured .price {
+            color: white;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-20px);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-orange);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-orange);
+            margin: 20px 0;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.featured .pricing-features li {
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+
+        /* === FAQ SECTION === */
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
+        }
+
+        .faq-question {
+            background: rgba(255,255,255,0.88);
+            padding: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            background: rgba(255,255,255,0.7);
+            transition: all 0.4s ease;
+        }
+
+        .faq-answer.active {
+            max-height: 200px;
+            padding: 25px;
+        }
+
+        /* === CTA SECTION === */
+        #cta {
+            background: radial-gradient(circle at top right, rgba(255,255,255,0.12), transparent 35%),
+                        linear-gradient(130deg, #111827, #4c1d95 55%, #7c2d12 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-content h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* === FOOTER === */
+        #footer {
+            background: linear-gradient(180deg, #0f172a, #020617);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-orange);
+            transform: translateY(-5px);
+        }
+
+        .contact-link {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.28);
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #ffffff;
+            border-bottom-color: var(--primary-orange);
+        }
+
+        .contact-icon-link {
+            color: inherit;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin-right: 6px;
+        }
+
+        .contact-icon-wa {
+            color: #25d366;
+        }
+
+        .contact-icon-link:hover i {
+            transform: scale(1.08);
+            transition: transform 0.25s ease;
+        }
+
+        .hero-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.86rem;
+            color: #dbe6ff;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 999px;
+            padding: 8px 16px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-stat {
+            display: flex;
+            gap: 24px;
+            margin: 24px 0 40px;
+            color: #cfd7ec;
+        }
+
+        .hero-stat div strong {
+            display: block;
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-image {
+                transform: translateX(0);
+                order: -1;
+            }
+
+            .hero-stat {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .shoe-tube {
+                width: min(360px, 100%);
+                padding: 16px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .features-grid,
+            .testimonials-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* === SCROLL ANIMATIONS === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === GLASSMORPHISM EFFECT === */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- === HERO SECTION === -->
+    <section id="hero">
+        <div class="hero-content">
+            <div class="hero-text reveal">
+                <span class="hero-chip"><i class="fas fa-circle-check"></i> Trusted by 10.000+ trendsetter</span>
+                <h1>StepUp Store</h1>
+                <p>Sepatu premium yang bikin gaya kamu <strong>next level</strong>. Koleksi terbaru untuk generasi Z yang berani tampil beda.</p>
+                <div class="hero-stat">
+                    <div><strong>4.9/5</strong>Customer rating</div>
+                    <div><strong>24H</strong>Fast dispatch</div>
+                    <div><strong>100 Hari</strong>Warranty</div>
+                </div>
+                <a href="#products" class="btn btn-primary">Shop Now</a>
+            </div>
+            <div class="hero-image reveal">
+                <img src="profil.jpg">
+            </div>
+        </div>
+    </section>
+
+    <!-- === FEATURES SECTION === -->
+    <section id="features" class="reveal">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mengapa Pilih StepUp?</h2>
+                <p>Koleksi sepatu terbaik dengan kualitas premium dan desain futuristik untuk gaya hidup anak muda</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Free Shipping</h3>
+                    <p>Gratis ongkir seluruh Indonesia untuk semua pembelian di atas Rp 500.000</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Garansi 100 Hari</h3>
+                    <p>Kami yakin dengan kualitas produk kami. Garansi penuh 100 hari!</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Easy Return</h3>
+                    <p>Tidak suka? Return mudah dalam 30 hari tanpa ribet</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>0% Installment</h3>
+                    <p>Cicilan 0% hingga 12 bulan dengan semua kartu kredit</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Premium Quality</h3>
+                    <p>Bahan terbaik dari supplier ternama dunia</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Terima pesanan dalam 1-3 hari kerja</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === ABOUT SECTION === -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="reveal">
+                    <h3>StepUp Store - Future of Streetwear</h3>
+                    <p>Brand sepatu premium yang dirancang khusus untuk generasi muda yang berani tampil beda. Setiap pasang sepatu adalah statement fashion yang menggabungkan teknologi canggih dan desain futuristik.</p>
+                    <p>Dari sneaker high-top dengan teknologi anti-slip hingga boots rugged untuk urban explorer, kami punya semuanya untuk melengkapi gaya kamu.</p>
+                    <a href="#products" class="btn btn-primary">Lihat Koleksi</a>
+                </div>
+                <div class="about-image reveal">
+                    <div class="shoe-tube" aria-label="Animasi showcase sepatu RGB" data-images="C:/Users/ASUS/.cursor/projects/c-Users-ASUS-OneDrive-Desktop-Belajar-With-Cursor-landing-page/assets/c__Users_ASUS_OneDrive_Desktop_Belajar_With_Cursor_landing_page_sepatu6.jpg|C:/Users/ASUS/.cursor/projects/c-Users-ASUS-OneDrive-Desktop-Belajar-With-Cursor-landing-page/assets/c__Users_ASUS_OneDrive_Desktop_Belajar_With_Cursor_landing_page_sepatu4.jpg|C:/Users/ASUS/.cursor/projects/c-Users-ASUS-OneDrive-Desktop-Belajar-With-Cursor-landing-page/assets/c__Users_ASUS_OneDrive_Desktop_Belajar_With_Cursor_landing_page_sepatu10.jpg|C:/Users/ASUS/.cursor/projects/c-Users-ASUS-OneDrive-Desktop-Belajar-With-Cursor-landing-page/assets/c__Users_ASUS_OneDrive_Desktop_Belajar_With_Cursor_landing_page_sepatu12.jpg|C:/Users/ASUS/.cursor/projects/c-Users-ASUS-OneDrive-Desktop-Belajar-With-Cursor-landing-page/assets/c__Users_ASUS_OneDrive_Desktop_Belajar_With_Cursor_landing_page_sepatu13.jpg">
+                        <div class="shoe-showcase">
+                            <img class="shoe-showcase-image" src="C:/Users/ASUS/.cursor/projects/c-Users-ASUS-OneDrive-Desktop-Belajar-With-Cursor-landing-page/assets/c__Users_ASUS_OneDrive_Desktop_Belajar_With_Cursor_landing_page_sepatu6.jpg" alt="Showcase sepatu premium">
+                        </div>
+                        <div class="shoe-glow-shadow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === TESTIMONIALS SECTION === -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Apa Kata Mereka</h2>
+                <p>Penasaran dengan kualitas produk StepUp Store? Lihat pendapat mereka langsung!</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Sepatunya bener-bener keren banget! Kualitas premium, nyaman dipake seharian. Worth every penny!"</p>
+                    <div class="testimonial-author">Ricky • Content Creator</div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Delivery cepet banget, packing rapi. Sepatunya persis kayak di foto, malah lebih keren!"</p>
+                    <div class="testimonial-author">Sari • Mahasiswi</div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Udah beli 3 pasang, semuanya top quality. Customer service juga ramah banget!"</p>
+                    <div class="testimonial-author">Dani • Skater</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === PRODUCTS SECTION === -->
+    <section id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Produk Unggulan</h2>
+                <p>Lihat lebih banyak pilihan sneaker premium dengan desain modern, untuk kamu yang siap upgrade gaya harian.</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card reveal">
+                    <img src="sepatu1.jpg">
+                    <div class="product-info">
+                        <h3>StepUp Aero Runner</h3>
+                        <p class="product-price">Rp 125.000</p>
+                        <a class="btn btn-primary product-order-btn" href="https://wa.me/6281220290096?text=Saya%20ingin%20memesan%20produk%20StepUp%20Strore%0ANama%20Produk%20%3A%20StepUp%20Aero%20Runner%0AHarga%20Produk%20%3A%20Rp%20125.000" target="_blank" rel="noopener noreferrer">Pesan Sekarang</a>
+                    </div>
+                </div>
+                    <div class="product-card reveal">
+                        <img src="sepatu3.jpg" alt="StepUp Ignite Pro">
+                    <div class="product-info">
+                        <h3>StepUp Ignite Pro</h3>
+                        <p class="product-price">Rp 145.000</p>
+                        <a class="btn btn-primary product-order-btn" href="https://wa.me/6281220290096?text=Saya%20ingin%20memesan%20produk%20StepUp%20Strore%0ANama%20Produk%20%3A%20StepUp%20Ignite%20Pro%0AHarga%20Produk%20%3A%20Rp%20145.000" target="_blank" rel="noopener noreferrer">Pesan Sekarang</a>
+                    </div>
+                </div>
+                <div class="product-card reveal">
+                    <img src="sepatu.jpg">
+                    <div class="product-info">
+                        <h3>StepUp Nova Street</h3>
+                        <p class="product-price">Rp 200.000</p>
+                        <a class="btn btn-primary product-order-btn" href="https://wa.me/6281220290096?text=Saya%20ingin%20memesan%20produk%20StepUp%20Strore%0ANama%20Produk%20%3A%20StepUp%20Nova%20Street%0AHarga%20Produk%20%3A%20Rp%20200.000" target="_blank" rel="noopener noreferrer">Pesan Sekarang</a>
+                    </div>
+                </div>
+                <div class="product-card reveal">
+                    <img src="sepatu13.jpg">
+                    <div class="product-info">
+                        <h3>StepUp Velocity X</h3>
+                        <p class="product-price">Rp 225.000</p>
+                        <a class="btn btn-primary product-order-btn" href="https://wa.me/6281220290096?text=Saya%20ingin%20memesan%20produk%20StepUp%20Strore%0ANama%20Produk%20%3A%20StepUp%20Velocity%20X%0AHarga%20Produk%20%3A%20Rp%20225.000" target="_blank" rel="noopener noreferrer">Pesan Sekarang</a>
+                    </div>
+                </div>
+                <div class="product-card reveal">
+                    <img src="sepatu5.jpg">
+                    <div class="product-info">
+                        <h3>StepUp Orbit Knit</h3>
+                        <p class="product-price">Rp 245.000</p>
+                        <a class="btn btn-primary product-order-btn" href="https://wa.me/6281220290096?text=Saya%20ingin%20memesan%20produk%20StepUp%20Strore%0ANama%20Produk%20%3A%20StepUp%20Orbit%20Knit%0AHarga%20Produk%20%3A%20Rp%20245.000" target="_blank" rel="noopener noreferrer">Pesan Sekarang</a>
+                    </div>
+                </div>
+                <div class="product-card reveal">
+                    <img src="sepatu12.jpg">
+                    <div class="product-info">
+                        <h3>StepUp Urban Pulse</h3>
+                        <p class="product-price">Rp 270.000</p>
+                        <a class="btn btn-primary product-order-btn" href="https://wa.me/6281220290096?text=Saya%20ingin%20memesan%20produk%20StepUp%20Strore%0ANama%20Produk%20%3A%20StepUp%20Urban%20Pulse%0AHarga%20Produk%20%3A%20Rp%20270.000" target="_blank" rel="noopener noreferrer">Pesan Sekarang</a>
+                    </div>
+                </div>
+                <div class="product-card reveal">
+                    <img src="sepatu10.jpg">
+                    <div class="product-info">
+                        <h3>StepUp Drift Core</h3>
+                        <p class="product-price">Rp 295.000</p>
+                        <a class="btn btn-primary product-order-btn" href="https://wa.me/6281220290096?text=Saya%20ingin%20memesan%20produk%20StepUp%20Strore%0ANama%20Produk%20%3A%20StepUp%20Drift%20Core%0AHarga%20Produk%20%3A%20Rp%20295.000" target="_blank" rel="noopener noreferrer">Pesan Sekarang</a>
+                    </div>
+                </div>
+                <div class="product-card reveal">
+                    <img src="sepatu6.jpg">
+                    <div class="product-info">
+                        <h3>StepUp Metro Lite</h3>
+                        <p class="product-price">Rp 300.000</p>
+                        <a class="btn btn-primary product-order-btn" href="https://wa.me/6281220290096?text=Saya%20ingin%20memesan%20produk%20StepUp%20Strore%0ANama%20Produk%20%3A%20StepUp%20Metro%20Lite%0AHarga%20Produk%20%3A%20Rp%20300.000" target="_blank" rel="noopener noreferrer">Pesan Sekarang</a>
+                    </div>
+                </div>
+                <div class="product-card reveal">
+                    <img src="sepatu4.jpg">
+                    <div class="product-info">
+                        <h3>StepUp Zenith Flow</h3>
+                        <p class="product-price">Rp 345.000</p>
+                        <a class="btn btn-primary product-order-btn" href="https://wa.me/6281220290096?text=Saya%20ingin%20memesan%20produk%20StepUp%20Strore%0ANama%20Produk%20%3A%20StepUp%20Zenith%20Flow%0AHarga%20Produk%20%3A%20Rp%20345.000" target="_blank" rel="noopener noreferrer">Pesan Sekarang</a>
+                    </div>
+                </div>
+                <div class="product-card reveal">
+                    <img src="sepatu7.jpg">
+                    <div class="product-info">
+                        <h3>StepUp Prime Motion</h3>
+                        <p class="product-price">Rp 360.000</p>
+                        <a class="btn btn-primary product-order-btn" href="https://wa.me/6281220290096?text=Saya%20ingin%20memesan%20produk%20StepUp%20Strore%0ANama%20Produk%20%3A%20StepUp%20Prime%20Motion%0AHarga%20Produk%20%3A%20Rp%20360.000" target="_blank" rel="noopener noreferrer">Pesan Sekarang</a>
+                    </div>
+                </div>
+                <div class="product-card reveal">
+                    <img src="sepatu8.jpg">
+                    <div class="product-info">
+                        <h3>StepUp Prime Motion</h3>
+                        <p class="product-price">Rp 360.000</p>
+                        <a class="btn btn-primary product-order-btn" href="https://wa.me/6281220290096?text=Saya%20ingin%20memesan%20produk%20StepUp%20Strore%0ANama%20Produk%20%3A%20StepUp%20Prime%20Motion%0AHarga%20Produk%20%3A%20Rp%20360.000" target="_blank" rel="noopener noreferrer">Pesan Sekarang</a>
+                    </div>
+                </div>
+                <div class="product-card reveal">
+                    <img src="sepatu9.jpg">
+                    <div class="product-info">
+                        <h3>StepUp Prime Motion</h3>
+                        <p class="product-price">Rp 360.000</p>
+                        <a class="btn btn-primary product-order-btn" href="https://wa.me/6281220290096?text=Saya%20ingin%20memesan%20produk%20StepUp%20Strore%0ANama%20Produk%20%3A%20StepUp%20Prime%20Motion%0AHarga%20Produk%20%3A%20Rp%20360.000" target="_blank" rel="noopener noreferrer">Pesan Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === FAQ SECTION === -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pertanyaan Umum</h2>
+                <p>Semua yang perlu kamu ketahui sebelum belanja</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item reveal">
+                    <div class="faq-question">
+                        <span>Berapa lama pengiriman?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Pengiriman reguler 2-5 hari, Express 1-2 hari kerja ke seluruh Indonesia.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question">
+                        <span>Apakah ada garansi?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ya! Garansi 100 hari untuk semua produk. Jika ada cacat produksi, kami ganti baru.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question">
+                        <span>Bisa COD?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ya, COD tersedia di Jabodetabek dan kota besar lainnya.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question">
+                        <span>Ukuran shoes bagaimana?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ukuran standar US. Ada size chart lengkap di setiap produk.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === FINAL CTA SECTION === -->
+    <section id="cta">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2>Siap Upgrade Style Kamu?</h2>
+                <p>Jangan lewatkan koleksi terbaru yang sudah sold out di tempat lain</p>
+                <a href="#products" class="btn btn-primary" style="font-size: 1.2rem; padding: 20px 50px;">Order Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- === FOOTER === -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>StepUp Store</h3>
+                    <p>Toko sepatu premium untuk generasi Z yang berani tampil beda.</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/6281220290096?text=Hallo%20kak%2C%20saya%20ingin%20memesan%20produk%20di%20StepUp%20Store" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.tiktok.com/@myname_rian11?_r=1&_t=ZS-968E1uE4Pe0" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/insantuan13?igsh=MXhocWhyYWV6cGR5cA==" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/17ZdeAn7H3/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#features">Keunggulan</a></li>
+                        <li><a href="#about">Tentang</a></li>
+                        <li><a href="#products">Produk</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Hubungi Kami</h4>
+                    <p><a class="contact-icon-link contact-icon-wa" href="https://wa.me/6281220290096?text=Hallo%20kak%2C%20saya%20ingin%20memesan%20produk%20di%20StepUp%20Store" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a><a class="contact-link" href="https://wa.me/6281220290096?text=Hallo%20kak%2C%20saya%20ingin%20memesan%20produk%20di%20StepUp%20Store" target="_blank" rel="noopener noreferrer">081220290096</a></p>
+                    <p><a class="contact-icon-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=fransiskusrian2@gmail.com&su=Pesan%20dari%20Website%20StepUp%20Store&body=Hallo%20kak%2C%20saya%20ingin%20memesan%20produk%20di%20StepUp%20Store" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a><a class="contact-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=fransiskusrian2@gmail.com&su=Pesan%20dari%20Website%20StepUp%20Store&body=Hallo%20kak%2C%20saya%20ingin%20memesan%20produk%20di%20StepUp%20Store" target="_blank" rel="noopener noreferrer">fransiskusrian2@gmail.com</a></p>
+                </div>
+            </div>
+            <div style="text-align: center; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); color: #666;">
+                <p>StepUp Store 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // === SCROLL REVEAL ANIMATION ===
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // === FAQ ACCORDION ===
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Close other answers
+                document.querySelectorAll('.faq-answer').forEach(a => {
+                    if (a !== answer) {
+                        a.classList.remove('active');
+                        a.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
+                
+                // Toggle current answer
+                answer.classList.toggle('active');
+                icon.style.transform = answer.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        });
+
+        // === SMOOTH SCROLLING ===
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // === HERO FLOATING ANIMATION ===
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('.hero-image img');
+            const parallaxSpeed = 0.5;
+            heroImage.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+        });
+
+        // === COUNTER ANIMATION (Optional enhancement) ===
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    start = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(start);
+            }, 16);
+        }
+
+        // Navbar scroll effect (if you add navbar later)
+        window.addEventListener('scroll', () => {
+            const hero = document.getElementById('hero');
+            if (window.scrollY > hero.offsetHeight - 100) {
+                document.body.style.background = 'var(--gray-light)';
+            } else {
+                document.body.style.background = '';
+            }
+        });
+
+        // === RGB SHOE SHOWCASE ANIMATION (SINGLE IMAGE ROTATION) ===
+        const shoeTube = document.querySelector('.shoe-tube');
+        const shoeShowcase = document.querySelector('.shoe-showcase');
+        const shoeShowcaseImage = document.querySelector('.shoe-showcase-image');
+
+        if (shoeTube && shoeShowcase && shoeShowcaseImage) {
+            const imageList = (shoeTube.dataset.images || '')
+                .split('|')
+                .map(item => item.trim())
+                .filter(Boolean);
+
+            let currentIndex = 0;
+            let rotation = 0;
+            let rotationSpeed = 0.22;
+            let targetSpeed = 0.22;
+            let tiltX = 0;
+            let tiltY = 0;
+            let targetTiltX = 0;
+            let targetTiltY = 0;
+            let isDragging = false;
+            let lastPointerX = 0;
+            let slideInterval;
+
+            const switchImage = (step = 1) => {
+                if (!imageList.length) return;
+                currentIndex = (currentIndex + step + imageList.length) % imageList.length;
+                shoeShowcaseImage.classList.add('is-switching');
+                setTimeout(() => {
+                    shoeShowcaseImage.src = imageList[currentIndex];
+                    shoeShowcaseImage.classList.remove('is-switching');
+                }, 180);
+            };
+
+            const restartSlideInterval = () => {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(() => {
+                    switchImage(1);
+                }, 2200);
+            };
+
+            const updateShowcaseAnimation = () => {
+                rotationSpeed += (targetSpeed - rotationSpeed) * 0.08;
+                rotation += rotationSpeed;
+                tiltX += (targetTiltX - tiltX) * 0.08;
+                tiltY += (targetTiltY - tiltY) * 0.08;
+
+                shoeShowcase.style.transform = `rotate(${rotation}deg) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+                requestAnimationFrame(updateShowcaseAnimation);
+            };
+
+            const setTiltFromPointer = (clientX, clientY) => {
+                const rect = shoeTube.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                const normalizedX = (clientX - centerX) / (rect.width / 2);
+                const normalizedY = (clientY - centerY) / (rect.height / 2);
+                targetTiltY = normalizedX * 7;
+                targetTiltX = normalizedY * -5;
+            };
+
+            shoeTube.addEventListener('mouseenter', () => {
+                targetSpeed = 0.42;
+            });
+
+            shoeTube.addEventListener('mousemove', (event) => {
+                if (!isDragging) {
+                    setTiltFromPointer(event.clientX, event.clientY);
+                }
+            });
+
+            shoeTube.addEventListener('mouseleave', () => {
+                if (!isDragging) {
+                    targetTiltX = 0;
+                    targetTiltY = 0;
+                    targetSpeed = 0.22;
+                }
+            });
+
+            shoeTube.addEventListener('mousedown', (event) => {
+                isDragging = true;
+                lastPointerX = event.clientX;
+                shoeTube.classList.add('dragging');
+            });
+
+            window.addEventListener('mousemove', (event) => {
+                if (!isDragging) return;
+                const deltaX = event.clientX - lastPointerX;
+                rotation += deltaX * 0.75;
+                targetSpeed = deltaX * 0.04;
+                lastPointerX = event.clientX;
+                setTiltFromPointer(event.clientX, event.clientY);
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (!isDragging) return;
+                isDragging = false;
+                shoeTube.classList.remove('dragging');
+                targetSpeed = 0.25;
+                targetTiltX = 0;
+                targetTiltY = 0;
+                switchImage(1);
+                restartSlideInterval();
+            });
+
+            shoeTube.addEventListener('touchstart', (event) => {
+                const touch = event.touches[0];
+                if (!touch) return;
+                isDragging = true;
+                lastPointerX = touch.clientX;
+                shoeTube.classList.add('dragging');
+            }, { passive: true });
+
+            shoeTube.addEventListener('touchmove', (event) => {
+                const touch = event.touches[0];
+                if (!touch || !isDragging) return;
+                event.preventDefault();
+                const deltaX = touch.clientX - lastPointerX;
+                rotation += deltaX * 0.8;
+                targetSpeed = deltaX * 0.045;
+                lastPointerX = touch.clientX;
+                setTiltFromPointer(touch.clientX, touch.clientY);
+            }, { passive: false });
+
+            const endTouchInteraction = () => {
+                if (!isDragging) return;
+                isDragging = false;
+                shoeTube.classList.remove('dragging');
+                targetSpeed = 0.25;
+                targetTiltX = 0;
+                targetTiltY = 0;
+                switchImage(1);
+                restartSlideInterval();
+            };
+
+            shoeTube.addEventListener('touchend', endTouchInteraction);
+            shoeTube.addEventListener('touchcancel', endTouchInteraction);
+
+            restartSlideInterval();
+            updateShowcaseAnimation();
+        }
+    </script>
+</body>
+</html>
